@@ -1,8 +1,5 @@
-name: "Tests"
+name: Tests
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 jobs:
@@ -12,6 +9,8 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure npm time machine registry
+        run: npm config set registry https://:2021-05-27T16%3A17%3A12.429000Z@time-machines-npm.sealsecurity.io/
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Install Node
@@ -28,6 +27,8 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure npm time machine registry
+        run: npm config set registry https://:2021-05-27T16%3A17%3A12.429000Z@time-machines-npm.sealsecurity.io/
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Install Node
